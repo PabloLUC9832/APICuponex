@@ -26,12 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE idEmpresa = #{idEmpresa}        
     </update>
     
-    <!--
-        <select id="getById" resultType="pojos.Medico" parameterType="int">
-        SELECT * FROM medico
-        WHERE idMedico = #{idMedico}
-    </select> 
-    -->
     <select id="getByNombre" resultType="pojos.Empresa" parameterType="String">
         SELECT * FROM empresa 
         WHERE nombre LIKE "%"#{nombre}"%"
