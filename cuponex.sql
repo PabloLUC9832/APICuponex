@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2022 a las 00:22:31
+-- Tiempo de generación: 24-11-2022 a las 14:45:24
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -126,6 +126,23 @@ CREATE TABLE `sucursal` (
   `longitud` varchar(15) NOT NULL,
   `encargado` varchar(30) NOT NULL,
   `idEmpresa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `nombre` varchar(30) NOT NULL,
+  `apellidoPaterno` varchar(30) NOT NULL,
+  `apellidoMaterno` varchar(30) NOT NULL,
+  `telefono` int(10) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  `fechaNacimiento` date NOT NULL,
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
