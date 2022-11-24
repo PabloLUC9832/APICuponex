@@ -144,6 +144,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "inicioSesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "pablo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "holaaaa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/acceso/escritorio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"acceso",
+								"escritorio"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -802,6 +839,48 @@
 								"promociones",
 								"byNombre",
 								"navidad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "inicioSesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "uuser@gmails.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/acceso/movil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"acceso",
+								"movil"
 							]
 						}
 					},

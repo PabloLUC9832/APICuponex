@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2022 a las 00:22:31
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 24-11-2022 a las 21:10:41
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cuponex`
 --
+CREATE DATABASE IF NOT EXISTS `cuponex` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `cuponex`;
 
 -- --------------------------------------------------------
 
@@ -35,6 +37,14 @@ CREATE TABLE `administrador` (
   `correo` varchar(50) NOT NULL,
   `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`idAdministrador`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `correo`, `password`) VALUES
+(1, 'Mario', 'Morales', 'Mora', 'pablo@gmail.com', 'holaaaa'),
+(3, 'jair', 'vasqeuz', 'García', 'ivan@gmail.com', '123456789');
 
 -- --------------------------------------------------------
 
@@ -87,6 +97,16 @@ CREATE TABLE `empresa` (
   `idEstatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`idEmpresa`, `nombre`, `nombreComercial`, `nombreRepresentanteLegal`, `correo`, `direccion`, `codigoPostal`, `ciudad`, `telefono`, `paginaWeb`, `rfc`, `idEstatus`) VALUES
+(1, 'hppp', 'hp incc', 'lenovo', 'hp@hp.cm', 'luces', 65413, 'santos', 987654, 'www.hp.mx', '123456', 302),
+(2, 'lenovo', 'HP INC', 'HPP ING', 'hp@gmail.com', 'rocas #1', 65352, 'xalapa', 123456, 'www.hp.com', '123456', 301),
+(3, 'acer', 'HP INC', 'HPP ING', 'hp@gmail.com', 'rocas #1', 65352, 'xalapa', 123456, 'www.hp.com', '123456', 301),
+(4, 'sabritas', 'HP INC', 'HPP ING', 'hp@gmail.com', 'rocas #1', 65352, 'xalapa', 123456, 'www.hp.com', '123456', 302);
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +128,14 @@ CREATE TABLE `promocion` (
   `idSucursal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `promocion`
+--
+
+INSERT INTO `promocion` (`idPromocion`, `nombre`, `descripcion`, `fechaInicio`, `fechaTermino`, `restricciones`, `tipoPromocion`, `porcentaje`, `costoPromocion`, `categoriaPromocion`, `idEstatus`, `idSucursal`) VALUES
+(1, 'bien fim2', 'oferton', '2022-02-02', '2022-03-03', 'para', 102, '15', 28, 203, 301, 3),
+(2, 'navidad', '5 días', '2022-02-02', '2022-03-03', 'asdasd', 204, '25', 12, 204, 302, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +155,40 @@ CREATE TABLE `sucursal` (
   `encargado` varchar(30) NOT NULL,
   `idEmpresa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sucursal`
+--
+
+INSERT INTO `sucursal` (`idSucursal`, `nombre`, `direccion`, `codigoPostal`, `colonia`, `ciudad`, `telefono`, `latitud`, `longitud`, `encargado`, `idEmpresa`) VALUES
+(1, 'la sucu', 'mi dire', 98745, 'la colonia', 'mi ciudad', 123, '22', 's122', 'oscar', 1),
+(3, 'otraa', 'avenida 1', 12365, 'lomas', 'cerro', 123456, '123', '446', 'vale', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellidoPaterno` varchar(30) NOT NULL,
+  `apellidoMaterno` varchar(30) NOT NULL,
+  `telefono` int(10) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  `fechaNacimiento` date NOT NULL,
+  `password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `telefono`, `correo`, `direccion`, `fechaNacimiento`, `password`) VALUES
+(1, 'user1', 'aplelido1', 'apellido2', 1234, 'uuser@gmail.com', 'valles', '2022-11-15', '123456'),
+(2, 'user2', 'aplelid21', 'apel2lido2', 1234, 'uuser@gmails.com', 'valles', '2022-11-15', '123456');
 
 --
 -- Índices para tablas volcadas
@@ -169,6 +231,13 @@ ALTER TABLE `sucursal`
   ADD KEY `empresa_FK_sucursal` (`idEmpresa`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD UNIQUE KEY `correo` (`correo`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -176,25 +245,31 @@ ALTER TABLE `sucursal`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `idAdministrador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAdministrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `promocion`
 --
 ALTER TABLE `promocion`
-  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPromocion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  MODIFY `idSucursal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSucursal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
