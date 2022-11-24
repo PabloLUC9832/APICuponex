@@ -1,0 +1,813 @@
+{
+	"info": {
+		"_postman_id": "0ac13189-6fc1-4ec5-838b-1d67167863bc",
+		"name": "Cuponex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20783361"
+	},
+	"item": [
+		{
+			"name": "Administrador",
+			"item": [
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "jair",
+									"type": "text"
+								},
+								{
+									"key": "apellidoPaterno",
+									"value": "vasqeuz",
+									"type": "text"
+								},
+								{
+									"key": "apellidoMaterno",
+									"value": "García",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "ivan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/administradores/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"administradores",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idAdministrador",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Mario",
+									"type": "text"
+								},
+								{
+									"key": "apellidoPaterno",
+									"value": "Morales",
+									"type": "text"
+								},
+								{
+									"key": "apellidoMaterno",
+									"value": "Mora",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "holaaaa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/administradores/modificar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"administradores",
+								"modificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idAdministrador",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/administradores/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"administradores",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empresa",
+			"item": [
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "sabritas",
+									"type": "text"
+								},
+								{
+									"key": "nombreComercial",
+									"value": "HP INC",
+									"type": "text"
+								},
+								{
+									"key": "nombreRepresentanteLegal",
+									"value": "HPP ING",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "hp@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "rocas #1",
+									"type": "text"
+								},
+								{
+									"key": "codigoPostal",
+									"value": "65352",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "xalapa",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "paginaWeb",
+									"value": "www.hp.com",
+									"type": "text"
+								},
+								{
+									"key": "rfc",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "idEstatus",
+									"value": "301",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/empresas/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"empresas",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idEmpresa",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "hppp",
+									"type": "text"
+								},
+								{
+									"key": "nombreComercial",
+									"value": "hp incc",
+									"type": "text"
+								},
+								{
+									"key": "nombreRepresentanteLegal",
+									"value": "lenovo",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "hp@hp.cm",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "luces",
+									"type": "text"
+								},
+								{
+									"key": "codigoPostal",
+									"value": "65413",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "santos",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "987654",
+									"type": "text"
+								},
+								{
+									"key": "paginaWeb",
+									"value": "www.hp.mx",
+									"type": "text"
+								},
+								{
+									"key": "idEstatus",
+									"value": "302",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/empresas/modificar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"empresas",
+								"modificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idEmpresa",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/empresas/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"empresas",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/empresas/byNombre/lenovo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"empresas",
+								"byNombre",
+								"lenovo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sucursal",
+			"item": [
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "otraa",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "avenida 1",
+									"type": "text"
+								},
+								{
+									"key": "codigoPostal",
+									"value": "12365",
+									"type": "text"
+								},
+								{
+									"key": "colonia",
+									"value": "lomas",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "cerro",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "latitud",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "longitud",
+									"value": "446",
+									"type": "text"
+								},
+								{
+									"key": "encargado",
+									"value": "vale",
+									"type": "text"
+								},
+								{
+									"key": "idEmpresa",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/sucursales/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"sucursales",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idSucursal",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "cafete",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "limas",
+									"type": "text"
+								},
+								{
+									"key": "codigoPostal",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "colonia",
+									"value": "Diamante",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "carton",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "latitud",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "longitud",
+									"value": "321",
+									"type": "text"
+								},
+								{
+									"key": "encargado",
+									"value": "oscar",
+									"type": "text"
+								},
+								{
+									"key": "idEmpresa",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/sucursales/modificar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"sucursales",
+								"modificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idSucursal",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/sucursales/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"sucursales",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/sucursales/byNombre/otraa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"sucursales",
+								"byNombre",
+								"otraa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promocion",
+			"item": [
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "navidad",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "5 días",
+									"type": "text"
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2022-02-02",
+									"type": "text"
+								},
+								{
+									"key": "fechaTermino",
+									"value": "2022-03-03",
+									"type": "text"
+								},
+								{
+									"key": "restricciones",
+									"value": "asdasd",
+									"type": "text"
+								},
+								{
+									"key": "tipoPromocion",
+									"value": "204",
+									"type": "text"
+								},
+								{
+									"key": "porcentaje",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "costoPromocion",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "categoriaPromocion",
+									"value": "101",
+									"type": "text"
+								},
+								{
+									"key": "idEstatus",
+									"value": "301",
+									"type": "text"
+								},
+								{
+									"key": "idSucursal",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"promociones",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPromocion",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "bien fim2",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "oferton",
+									"type": "text"
+								},
+								{
+									"key": "restricciones",
+									"value": "para",
+									"type": "text"
+								},
+								{
+									"key": "tipoPromocion",
+									"value": "102",
+									"type": "text"
+								},
+								{
+									"key": "porcentaje",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "costoPromocion",
+									"value": "28",
+									"type": "text"
+								},
+								{
+									"key": "categoriaPromocion",
+									"value": "203",
+									"type": "text"
+								},
+								{
+									"key": "idEstatus",
+									"value": "301",
+									"type": "text"
+								},
+								{
+									"key": "idSucursal",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/modificar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"promociones",
+								"modificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPromocion",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"promociones",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByNombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/byNombre/navidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"promociones",
+								"byNombre",
+								"navidad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
