@@ -1,5 +1,6 @@
 package ws;
 
+import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -23,6 +24,25 @@ public class AdministradorWS {
 
     public AdministradorWS() {
     }
+    
+    @Path("all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Administrador> buscarDatos(){
+        
+        List<Administrador> administradores = null;
+        SqlSession conn = mybatis.MyBatisUtil.getSession();
+        if (conn != null) {
+            try{
+                administradores = conn.selectList("administrador.getAllAdministradores");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conn.close();
+            }
+        }
+        return administradores;
+    }    
 
     @Path("registrar")
     @POST

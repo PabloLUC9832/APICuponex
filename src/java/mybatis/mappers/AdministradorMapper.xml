@@ -5,6 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="administrador">
     
+    <select id="getAllAdministradores" resultType="pojos.Administrador">
+        SELECT idAdministrador, nombre, apellidoPaterno, apellidoMaterno, correo
+        FROM administrador
+    </select>    
+    
     <select id="iniciarSesion" resultType="pojos.Administrador" parameterType="pojos.Administrador">
         SELECT * FROM administrador
         WHERE correo = #{correo}
