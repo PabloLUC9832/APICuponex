@@ -193,15 +193,12 @@ public class SucursalWS {
     @Path("byNombre/{nombre}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    //public Sucursal buscarById(@PathParam("nombre") String nombre ){
     public List<Sucursal> buscarById(@PathParam("nombre") String nombre ){
-        //Sucursal sucursalResultado = null;
         List<Sucursal> sucursales = null;
         SqlSession conn = mybatis.MyBatisUtil.getSession();
         if (conn != null) {
             try {
-                //sucursalResultado = conn.selectOne("sucursal.getByNombre",nombre);
-                sucursales = conn.selectList("sucursal.getByNombre",nombre);
+                sucursales = conn.selectList("sucursal.getByNombreODireccion",nombre);
             } catch (Exception e) {
                 e.printStackTrace();
             }finally{

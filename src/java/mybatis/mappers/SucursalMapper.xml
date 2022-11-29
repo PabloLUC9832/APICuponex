@@ -29,10 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE idSucursal = #{idSucursal}
     </update>
     
-    <select id="getByNombre" resultType="pojos.Sucursal" parameterType="String">
+    <select id="getByNombreODireccion" resultType="pojos.Sucursal" parameterType="String">
         SELECT * FROM sucursal
         WHERE nombre LIKE "%"#{nombre}"%"
-        <!--WHERE nombre = #{nombre}-->
+        UNION SELECT * FROM sucursal WHERE direccion LIKE "%"#{nombre}"%" 
     </select>     
     
 </mapper>
