@@ -4,6 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="empresa">
+    
+    <select id="getAllEmpresas" resultType="pojos.Empresa">
+        SELECT * FROM empresa
+    </select>      
 
     <insert id="registrar" parameterType="pojos.Empresa">
         INSERT INTO empresa (nombre, nombreComercial, nombreRepresentanteLegal,
@@ -14,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 )
     </insert>
 
-    <update id="modificar" parameterType="pojos.Administrador">
+    <update id="modificar" parameterType="pojos.Empresa">
         UPDATE empresa SET nombre = #{nombre}, nombreComercial = #{nombreComercial}, nombreRepresentanteLegal = #{nombreRepresentanteLegal},
                                     correo = #{correo},direccion = #{direccion} ,codigoPostal = #{codigoPostal},ciudad = #{ciudad},
                                     telefono = #{telefono},paginaWeb = #{paginaWeb},idEstatus = #{idEstatus}

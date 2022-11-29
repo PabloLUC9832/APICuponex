@@ -1,5 +1,6 @@
 package ws;
 
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -23,6 +24,25 @@ public class EmpresaWS {
 
     public EmpresaWS() {
     }
+    
+    @Path("all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Empresa> buscarDatos(){
+        
+        List<Empresa> empresas = null;
+        SqlSession conn = mybatis.MyBatisUtil.getSession();
+        if (conn != null) {
+            try{
+                empresas = conn.selectList("empresa.getAllEmpresas");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conn.close();
+            }
+        }
+        return empresas;
+    }      
     
 
     @Path("registrar")
