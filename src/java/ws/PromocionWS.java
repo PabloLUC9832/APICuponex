@@ -3,7 +3,7 @@ package ws;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
+import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,6 +24,25 @@ public class PromocionWS {
 
     public PromocionWS() {
     }
+    
+    @Path("all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Promocion> buscarDatos(){
+        
+        List<Promocion> empresas = null;
+        SqlSession conn = mybatis.MyBatisUtil.getSession();
+        if (conn != null) {
+            try{
+                empresas = conn.selectList("promocion.getAllPromociones");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conn.close();
+            }
+        }
+        return empresas;
+    }      
     
     @Path("registrar")
     @POST
