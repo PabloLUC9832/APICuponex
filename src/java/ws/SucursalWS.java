@@ -1,5 +1,6 @@
 package ws;
 
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -23,6 +24,25 @@ public class SucursalWS {
 
     public SucursalWS() {
     }
+    
+    @Path("all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Sucursal> buscarDatos(){
+        
+        List<Sucursal> sucursales = null;
+        SqlSession conn = mybatis.MyBatisUtil.getSession();
+        if (conn != null) {
+            try{
+                sucursales = conn.selectList("sucursal.getAllSucursales");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conn.close();
+            }
+        }
+        return sucursales;
+    }       
 
     @Path("registrar")
     @POST
