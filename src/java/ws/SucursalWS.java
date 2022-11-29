@@ -1,5 +1,6 @@
 package ws;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -192,20 +193,22 @@ public class SucursalWS {
     @Path("byNombre/{nombre}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Sucursal buscarById(@PathParam("nombre") String nombre ){
-       
-        Sucursal sucursalResultado = null;
+    //public Sucursal buscarById(@PathParam("nombre") String nombre ){
+    public List<Sucursal> buscarById(@PathParam("nombre") String nombre ){
+        //Sucursal sucursalResultado = null;
+        List<Sucursal> sucursales = null;
         SqlSession conn = mybatis.MyBatisUtil.getSession();
         if (conn != null) {
             try {
-                sucursalResultado = conn.selectOne("sucursal.getByNombre",nombre);
+                //sucursalResultado = conn.selectOne("sucursal.getByNombre",nombre);
+                sucursales = conn.selectList("sucursal.getByNombre",nombre);
             } catch (Exception e) {
                 e.printStackTrace();
             }finally{
                 conn.close();
             }
         }
-        return sucursalResultado;
+        return sucursales;
     }    
     
 
