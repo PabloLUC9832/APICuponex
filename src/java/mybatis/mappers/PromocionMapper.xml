@@ -30,9 +30,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE idPromocion = #{idPromocion}
     </update>    
     
-    <select id="getByNombre" resultType="pojos.Promocion" parameterType="String">
-        SELECT * FROM promocion 
+    <select id="getByNombreOFechaInicioOFechaTermino" resultType="pojos.Promocion" parameterType="String">
+        SELECT * FROM promocion
         WHERE nombre LIKE "%"#{nombre}"%"
+        UNION       
+        SELECT * FROM promocion
+        WHERE fechaInicio LIKE "%"#{nombre}"%"
+        UNION       
+        SELECT * FROM promocion
+        WHERE fechaTermino LIKE "%"#{nombre}"%"                
     </select>     
                     
 </mapper>

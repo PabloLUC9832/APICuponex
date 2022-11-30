@@ -192,20 +192,20 @@ public class PromocionWS {
     @Path("byNombre/{nombre}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Promocion buscarById(@PathParam("nombre") String nombre ){
+    public List<Promocion> buscarById(@PathParam("nombre") String nombre ){
        
-        Promocion promocionResultado = null;
+        List<Promocion> promociones = null;
         SqlSession conn = mybatis.MyBatisUtil.getSession();
         if (conn != null) {
             try {
-                promocionResultado = conn.selectOne("promocion.getByNombre",nombre);
+                promociones = conn.selectList("promocion.getByNombreOFechaInicioOFechaTermino",nombre);
             } catch (Exception e) {
                 e.printStackTrace();
             }finally{
                 conn.close();
             }
         }
-        return promocionResultado;
+        return promociones;
     }     
     
     
