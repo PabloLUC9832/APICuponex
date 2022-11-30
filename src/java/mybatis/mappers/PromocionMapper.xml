@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="promocion">
     
     <select id="getAllPromociones" resultType="pojos.Promocion">
-        SELECT * FROM promocion
+        SELECT * FROM promocion WHERE idEstatus = 301
     </select>       
 
     <insert id="registrar" parameterType="pojos.Promocion">
@@ -39,6 +39,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         UNION       
         SELECT * FROM promocion
         WHERE fechaTermino LIKE "%"#{nombre}"%"                
-    </select>     
+    </select>
                     
 </mapper>

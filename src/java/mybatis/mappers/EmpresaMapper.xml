@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="empresa">
     
     <select id="getAllEmpresas" resultType="pojos.Empresa">
-        SELECT * FROM empresa
+        SELECT * FROM empresa WHERE idEstatus = 301
     </select>      
 
     <insert id="registrar" parameterType="pojos.Empresa">
