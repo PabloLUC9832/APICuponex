@@ -195,20 +195,20 @@ public class EmpresaWS {
     @Path("byNombre/{nombre}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Empresa buscarById(@PathParam("nombre") String nombre ){
+    public List<Empresa> buscarById(@PathParam("nombre") String nombre ){
        
-        Empresa empresaResultado = null;
+        List<Empresa> empresas = null;
         SqlSession conn = mybatis.MyBatisUtil.getSession();
         if (conn != null) {
             try {
-                empresaResultado = conn.selectOne("empresa.getByNombre",nombre);
+                empresas = conn.selectList("empresa.getByNombreORFCORepresentante",nombre);
             } catch (Exception e) {
                 e.printStackTrace();
             }finally{
                 conn.close();
             }
         }
-        return empresaResultado;
+        return empresas;
     }    
                 
 }

@@ -30,9 +30,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE idEmpresa = #{idEmpresa}        
     </update>
     
-    <select id="getByNombre" resultType="pojos.Empresa" parameterType="String">
+    <select id="getByNombreORFCORepresentante" resultType="pojos.Empresa" parameterType="String">
         SELECT * FROM empresa 
         WHERE nombre LIKE "%"#{nombre}"%"
+        UNION
+        SELECT * FROM empresa 
+        WHERE rfc LIKE "%"#{nombre}"%"
+        UNION
+        SELECT * FROM empresa 
+        WHERE nombreRepresentanteLegal	 LIKE "%"#{nombre}"%"
+                
     </select>     
     
 </mapper>
