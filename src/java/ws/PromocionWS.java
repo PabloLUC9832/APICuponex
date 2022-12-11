@@ -57,7 +57,8 @@ public class PromocionWS {
                             @FormParam("costoPromocion") float costoPromocion,
                             @FormParam("categoriaPromocion") String categoriaPromocion,
                             @FormParam("idEstatus") Integer idEstatus,
-                            @FormParam("idSucursal") Integer idSucursal
+                            @FormParam("idSucursal") Integer idSucursal,
+                            @FormParam("fotoPromocion") String fotoPromocion
                             ){
         
         Promocion promocionRegistro = new Promocion();
@@ -72,6 +73,7 @@ public class PromocionWS {
         promocionRegistro.setCategoriaPromocion(tipoPromocion);
         promocionRegistro.setIdEstatus(idEstatus);
         promocionRegistro.setIdSucursal(idSucursal);
+        promocionRegistro.setFotoPromocion(fotoPromocion);
                                 
         Respuesta respuestaWS = new Respuesta();
         SqlSession conexionBD = mybatis.MyBatisUtil.getSession();
