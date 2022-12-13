@@ -10,7 +10,7 @@ public class RespuestaLogin {
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    
+
     public RespuestaLogin(){
         
     }
@@ -90,5 +90,4 @@ public class RespuestaLogin {
         this.apellidoMaterno = apellidoMaterno;
     }
     
-
 }

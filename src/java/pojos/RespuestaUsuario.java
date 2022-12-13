@@ -1,7 +1,9 @@
 package pojos;
 
-public class Usuario {
+public class RespuestaUsuario {
 
+    private Boolean error;
+    private String mensaje;
     private Integer idUsuario;
     private String nombre;
     private String apellidoPaterno;
@@ -9,13 +11,15 @@ public class Usuario {
     private String telefono;
     private String correo;
     private String direccion;
-    private String fechaNacimiento;    
-    private String password;    
+    private String fechaNacimiento;
+    private String password;
 
-    public Usuario() {
+    public RespuestaUsuario() {
     }
-
-    public Usuario(Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, String direccion, String fechaNacimiento, String password) {
+        
+    public RespuestaUsuario(Boolean error, String mensaje, Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, String direccion, String fechaNacimiento, String password) {
+        this.error = error;
+        this.mensaje = mensaje;
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -25,6 +29,22 @@ public class Usuario {
         this.direccion = direccion;
         this.fechaNacimiento = fechaNacimiento;
         this.password = password;
+    }
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public void setError(Boolean error) {
+        this.error = error;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
     public Integer getIdUsuario() {
@@ -98,5 +118,5 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-            
+    
 }

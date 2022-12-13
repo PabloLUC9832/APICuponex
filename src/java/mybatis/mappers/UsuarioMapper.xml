@@ -14,14 +14,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <select id="registrar" parameterType="pojos.Usuario">
-        INSERT INTO usuario (correo, password)
-        VALUES (#{correo}, #{password})
+        INSERT INTO usuario (nombre,apellidoPaterno,apellidoMaterno,telefono,correo,direccion,fechaNacimiento, password)
+        VALUES ( #{nombre}, #{apellidoPaterno},#{apellidoMaterno},#{telefono}, #{correo},#{direccion},#{fechaNacimiento}, #{password} )
     </select>
     
-    <select id="registrarComplemento" parameterType="pojos.Usuario">
-        INSERT INTO usuario (nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, fechaNacimiento)
-        VALUES (#{nombre}, #{apellidoPaterno}, #{apellidoMaterno}, #{telefono}, #{direccion}, #{fechaNacimiento})
-        WHERE correo = #{correo}
+    <select id="getAllUsuarios" resultType="pojos.Usuario">
+        SELECT nombre, apellidoPaterno, apellidoMaterno, telefono,direccion,fechaNacimiento,password
+        FROM usuario
+    </select>     
+
+    <select id="obtenerUsuario" resultType="pojos.Usuario" parameterType="pojos.Usuario">
+        SELECT * FROM usuario WHERE correo = #{correo};        
     </select>
-    
+
 </mapper>

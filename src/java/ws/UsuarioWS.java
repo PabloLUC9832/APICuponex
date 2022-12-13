@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ws;
 
 import javax.ws.rs.FormParam;
@@ -15,11 +10,10 @@ import javax.ws.rs.core.UriInfo;
 import org.apache.ibatis.session.SqlSession;
 import pojos.Respuesta;
 import pojos.Usuario;
+import java.util.List;
+import javax.ws.rs.GET;
+import pojos.RespuestaUsuario;
 
-/**
- *
- * @author jair1
- */
 @Path("usuarios")
 public class UsuarioWS {
 
@@ -29,14 +23,45 @@ public class UsuarioWS {
     public UsuarioWS() {
     }
     
+    @Path("all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Usuario> buscarDatos(){
+        
+        List<Usuario> usuarios = null;
+        SqlSession conn = mybatis.MyBatisUtil.getSession();
+        if (conn != null) {
+            try{
+                usuarios = conn.selectList("usuario.getAllUsuarios");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conn.close();
+            }
+        }
+        return usuarios;
+    }     
+        
     @Path("registrar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Respuesta registrar(@FormParam("correo") String correo,
-                            @FormParam("password") String password
+    public Respuesta registrar( @FormParam("nombre") String nombre,
+                                @FormParam("apellidoPaterno") String apellidoPaterno,
+                                @FormParam("apellidoMaterno") String apellidoMaterno,
+                                @FormParam("telefono") String telefono,
+                                @FormParam("correo") String correo,
+                                @FormParam("direccion") String direccion,
+                                @FormParam("fechaNacimiento") String fechaNacimiento,
+                                @FormParam("password") String password
                             ){
         Usuario usuarioRegistro = new Usuario();
+        usuarioRegistro.setNombre(nombre);
+        usuarioRegistro.setApellidoPaterno(apellidoPaterno);
+        usuarioRegistro.setApellidoMaterno(apellidoMaterno);
+        usuarioRegistro.setTelefono(telefono);
         usuarioRegistro.setCorreo(correo);
+        usuarioRegistro.setDireccion(direccion);
+        usuarioRegistro.setFechaNacimiento(fechaNacimiento);
         usuarioRegistro.setPassword(password);
         
         Respuesta respuestaWS = new Respuesta();
@@ -65,52 +90,51 @@ public class UsuarioWS {
         return respuestaWS;
     }
     
-    
-    @Path("registrarComplemento")
+    @Path("obtenerUsuario")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Respuesta registrarComplemento(@FormParam("correo") String correo,
-                            @FormParam("nombre") String nombre,
-                            @FormParam("apellidoPaterno") String apellidoPaterno,
-                            @FormParam("apellidoMaterno") String apellidoMaterno,
-                            @FormParam("telefono") Integer telefono,
-                            @FormParam("direccion") String direccion,
-                            @FormParam("fechaNacimiento") String fechaNaciento
-                            ){
-        Usuario usuarioRegistro = new Usuario();
-        usuarioRegistro.setCorreo(correo);
-        usuarioRegistro.setNombre(nombre);
-        usuarioRegistro.setApellidoPaterno(apellidoPaterno);
-        usuarioRegistro.setApellidoMaterno(apellidoMaterno);
-        usuarioRegistro.setTelefono(telefono);
-        usuarioRegistro.setDireccion(direccion);
-        usuarioRegistro.setFechaNacimiento(fechaNaciento);
+    public RespuestaUsuario  iniciarSesionEscritorio( @FormParam("correo")  String correo){
         
-        
-        Respuesta respuestaWS = new Respuesta();
-        SqlSession conn = mybatis.MyBatisUtil.getSession();
-        if(conn != null){
+        RespuestaUsuario resp = new RespuestaUsuario();
+
+        Usuario usuario =  new Usuario();
+        usuario.setCorreo(correo);
+                
+        Usuario usuarioResultado = null;
+        SqlSession conexionBD = mybatis.MyBatisUtil.getSession();
+        if (conexionBD != null) {
             try{
-                int resultadoMapper = conn.insert("usuario.registrarComplemento", usuarioRegistro);
-                conn.commit();
-                if(resultadoMapper > 0){
-                    respuestaWS.setError(false);
-                    respuestaWS.setMensaje("El registro se ha completado correctamente...");
+                usuarioResultado = conexionBD.selectOne("usuario.obtenerUsuario",usuario);
+
+                conexionBD.commit();
+                if(usuarioResultado != null){
+
+                    resp.setError(false);
+                    resp.setMensaje("Bienvenido ");
+                    resp.setNombre(usuarioResultado.getNombre());
+                    resp.setApellidoPaterno(usuarioResultado.getApellidoPaterno());
+                    resp.setApellidoMaterno(usuarioResultado.getApellidoMaterno());
+                    resp.setTelefono(usuarioResultado.getTelefono());
+                    resp.setDireccion(usuarioResultado.getDireccion());
+                    resp.setFechaNacimiento(usuarioResultado.getFechaNacimiento());
+                    resp.setPassword(usuarioResultado.getPassword());                    
                 }else{
-                    respuestaWS.setError(true);
-                    respuestaWS.setMensaje("No se pudo completar el registro...");
+                    resp.setError(true);
+                    resp.setMensaje("Error al obtener datos");
                 }
             }catch(Exception e){
-                respuestaWS.setError(true);
-                respuestaWS.setMensaje(e.getMessage());
+                resp.setError(true);
+                resp.setMensaje(e.getMessage());
             }finally{
-                conn.close();
+                conexionBD.close();
             }
         }else{
-            respuestaWS.setError(true);
-            respuestaWS.setMensaje("Sin conexión con el sistema...");
-        }
-        return respuestaWS;
+            resp.setError(true);
+            resp.setMensaje("Sin conexión al sistema");
+        }        
+
+
+        return resp;
     }
     
     
