@@ -26,5 +26,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="obtenerUsuario" resultType="pojos.Usuario" parameterType="pojos.Usuario">
         SELECT * FROM usuario WHERE correo = #{correo};        
     </select>
+    
+    <update id="modificar" parameterType="pojos.Usuario">
+        UPDATE usuario SET nombre = #{nombre}, apellidoPaterno = #{apellidoPaterno}, apellidoMaterno = #{apellidoMaterno}, 
+                           telefono = #{telefono}, direccion = #{direccion},fechaNacimiento = #{fechaNacimiento}, password = #{password}
+        WHERE idUsuario = #{idUsuario}
+    </update>    
+
 
 </mapper>

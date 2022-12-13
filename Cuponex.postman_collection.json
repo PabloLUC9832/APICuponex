@@ -71,27 +71,27 @@
 							"urlencoded": [
 								{
 									"key": "idAdministrador",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								},
 								{
 									"key": "nombre",
-									"value": "Mario",
+									"value": "contestame",
 									"type": "text"
 								},
 								{
 									"key": "apellidoPaterno",
-									"value": "Morales",
+									"value": "por",
 									"type": "text"
 								},
 								{
 									"key": "apellidoMaterno",
-									"value": "Mora",
+									"value": "favor",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "holaaaa",
+									"value": "123456",
 									"type": "text"
 								}
 							]
@@ -177,6 +177,28 @@
 								"ws",
 								"acceso",
 								"escritorio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/administradores/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"administradores",
+								"all"
 							]
 						}
 					},
@@ -389,7 +411,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/APICuponex/ws/empresas/byNombre/lenovo",
+							"raw": "http://localhost:8084/APICuponex/ws/empresas/byNombre/32",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -400,7 +422,29 @@
 								"ws",
 								"empresas",
 								"byNombre",
-								"lenovo"
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/empresas/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"empresas",
+								"all"
 							]
 						}
 					},
@@ -498,7 +542,7 @@
 							"urlencoded": [
 								{
 									"key": "idSucursal",
-									"value": "2",
+									"value": "5",
 									"type": "text"
 								},
 								{
@@ -548,7 +592,7 @@
 								},
 								{
 									"key": "idEmpresa",
-									"value": "2",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -608,7 +652,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/APICuponex/ws/sucursales/byNombre/otraa",
+							"raw": "http://localhost:8084/APICuponex/ws/sucursales/byNombre/mi dire",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -619,7 +663,29 @@
 								"ws",
 								"sucursales",
 								"byNombre",
-								"otraa"
+								"mi dire"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/sucursales/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"sucursales",
+								"all"
 							]
 						}
 					},
@@ -640,7 +706,7 @@
 							"urlencoded": [
 								{
 									"key": "nombre",
-									"value": "navidad",
+									"value": "navidadP",
 									"type": "text"
 								},
 								{
@@ -690,8 +756,14 @@
 								},
 								{
 									"key": "idSucursal",
-									"value": "1",
+									"value": "5",
 									"type": "text"
+								},
+								{
+									"key": "fotoPromocion",
+									"value": "95153",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -799,7 +871,7 @@
 							"urlencoded": [
 								{
 									"key": "idPromocion",
-									"value": "2",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -827,7 +899,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/APICuponex/ws/promociones/byNombre/navidad",
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/byNombre/2022-11-03",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -838,7 +910,58 @@
 								"ws",
 								"promociones",
 								"byNombre",
-								"navidad"
+								"2022-11-03"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"promociones",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subirFoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/C:/Users/rdjr/Downloads/1200 Logosimbolo_RGB_fondos oscuros.png"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/promociones/subirImagen/34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"promociones",
+								"subirImagen",
+								"34"
 							]
 						}
 					},
@@ -881,6 +1004,181 @@
 								"ws",
 								"acceso",
 								"movil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "pabloo",
+									"type": "text"
+								},
+								{
+									"key": "apellidoPaterno",
+									"value": "lucass",
+									"type": "text"
+								},
+								{
+									"key": "apellidoMaterno",
+									"value": "negretee",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "ab@aklk.com",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "mi dir",
+									"type": "text"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-01-01",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/usuarios/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"usuarios",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/usuarios/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"usuarios",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "correo",
+									"value": "uuser@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/usuarios/obtenerUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"usuarios",
+								"obtenerUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modificar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/usuarios/modificar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"usuarios",
+								"modificar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalogo",
+			"item": [
+				{
+					"name": "byCategoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/APICuponex/ws/catalogos/bycategoria/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"APICuponex",
+								"ws",
+								"catalogos",
+								"bycategoria",
+								"1"
 							]
 						}
 					},

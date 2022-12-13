@@ -1,5 +1,6 @@
 package ws;
 
+import java.util.HashMap;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -13,6 +14,7 @@ import pojos.Respuesta;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojos.Promocion;
 
@@ -57,8 +59,7 @@ public class PromocionWS {
                             @FormParam("costoPromocion") float costoPromocion,
                             @FormParam("categoriaPromocion") String categoriaPromocion,
                             @FormParam("idEstatus") Integer idEstatus,
-                            @FormParam("idSucursal") Integer idSucursal,
-                            @FormParam("fotoPromocion") String fotoPromocion
+                            @FormParam("idSucursal") Integer idSucursal
                             ){
         
         Promocion promocionRegistro = new Promocion();
@@ -73,7 +74,6 @@ public class PromocionWS {
         promocionRegistro.setCategoriaPromocion(tipoPromocion);
         promocionRegistro.setIdEstatus(idEstatus);
         promocionRegistro.setIdSucursal(idSucursal);
-        promocionRegistro.setFotoPromocion(fotoPromocion);
                                 
         Respuesta respuestaWS = new Respuesta();
         SqlSession conexionBD = mybatis.MyBatisUtil.getSession();
@@ -210,7 +210,44 @@ public class PromocionWS {
         return promociones;
     }     
     
-    
-    
-    
+    @Path("subirImagen/{idPromocion}")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Respuesta subirImagen ( @PathParam("idPromocion") Integer idPromocion ,
+                                   byte[] fotoPromocion                              
+                                 ){
+        
+        SqlSession conexionBD = MyBatisUtil.getSession();
+        Respuesta respuesta = new Respuesta();
+        respuesta.setError(true);
+        if (conexionBD != null) {
+            
+            try{
+                HashMap<String,Object> parametros = new HashMap<>();
+                parametros.put("idPromocion", idPromocion);
+                parametros.put("fotoPromocion", fotoPromocion);
+                int filasAfectadas = conexionBD.update("promocion.subirfoto", parametros);
+                
+                if (filasAfectadas > 0) {
+                    respuesta.setError(false);
+                    respuesta.setMensaje("Foto de la promoción guardada correctamente");
+                    conexionBD.commit();
+                }else{
+                    respuesta.setMensaje("Error al guardar la foto de la promoción");
+                }
+            }catch(Exception e){
+                respuesta.setMensaje(e.getMessage());
+            }finally{
+                conexionBD.close();
+            }
+            
+            
+        }else{
+            respuesta.setMensaje("Por el momento no hay conexión para el guardado de la imagen...");
+        }
+        
+        
+        return respuesta;
+    }
+        
 }

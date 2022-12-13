@@ -12,6 +12,7 @@ import pojos.Respuesta;
 import pojos.Usuario;
 import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import pojos.RespuestaUsuario;
 
 @Path("usuarios")
@@ -136,6 +137,55 @@ public class UsuarioWS {
 
         return resp;
     }
-    
+
+    @Path("modificar")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Respuesta modificar(@FormParam("idUsuario") int idUsuario,
+                            @FormParam("nombre") String nombre,
+                            @FormParam("apellidoPaterno") String apellidoPaterno,
+                            @FormParam("apellidoMaterno") String apellidoMaterno,
+                            @FormParam("telefono") String telefono,
+                            @FormParam("direccion") String direccion,
+                            @FormParam("fechaNacimiento") String fechaNacimiento,
+                            @FormParam("password") String password
+                            ){
+
+        Usuario usuarioRegistro = new Usuario();
+        usuarioRegistro.setIdUsuario(idUsuario);
+        usuarioRegistro.setNombre(nombre);
+        usuarioRegistro.setApellidoPaterno(apellidoPaterno);
+        usuarioRegistro.setApellidoMaterno(apellidoMaterno);
+        usuarioRegistro.setTelefono(telefono);
+        usuarioRegistro.setDireccion(direccion);
+        usuarioRegistro.setFechaNacimiento(fechaNacimiento);
+        usuarioRegistro.setPassword(password);
+
+        Respuesta respuestaWS = new Respuesta();
+        SqlSession conexionBD = mybatis.MyBatisUtil.getSession();
+        if (conexionBD != null) {
+            try{
+                int resultadoMapper = conexionBD.insert("usuario.modificar",usuarioRegistro);
+                conexionBD.commit();
+                if(resultadoMapper > 0){
+                    respuestaWS.setError(false);
+                    respuestaWS.setMensaje("Usuario modificado correctamente");
+                }else{
+                    respuestaWS.setError(true);
+                    respuestaWS.setMensaje("No se pudo modificar el registro enviado..");
+                }
+            }catch(Exception e){
+                respuestaWS.setError(true);
+                respuestaWS.setMensaje(e.getMessage());
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            respuestaWS.setError(true);
+            respuestaWS.setMensaje("Sin conexión al sistema");
+        }
+
+        return respuestaWS;
+    }
     
 }

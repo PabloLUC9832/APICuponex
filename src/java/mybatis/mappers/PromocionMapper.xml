@@ -10,11 +10,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>       
 
     <insert id="registrar" parameterType="pojos.Promocion">
-        INSERT INTO promocion (nombre,descripcion,fechaInicio,fechaTermino,restricciones,tipoPromocion,
-                               porcentaje,costoPromocion,categoriaPromocion,idEstatus,idSucursal,fotoPromocion)
+        INSERT INTO promocion (nombre,descripcion,fechaInicio,fechaTermino,
+                               restricciones,tipoPromocion,porcentaje,costoPromocion,
+                               categoriaPromocion,idEstatus,idSucursal)
+        
         VALUES (#{nombre}, #{descripcion},#{fechaInicio},#{fechaTermino},
-                #{restricciones},#{tipoPromocion},#{porcentaje},#{costoPromocion},#{categoriaPromocion},
-                #{idEstatus},#{idSucursal},#{fotoPromocion}
+                #{restricciones},#{tipoPromocion},#{porcentaje},#{costoPromocion},
+                #{categoriaPromocion},#{idEstatus},#{idSucursal}
                 )
     </insert>
     
@@ -40,5 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM promocion
         WHERE fechaTermino LIKE "%"#{nombre}"%"                
     </select>
-                    
+
+    <update id="subirfoto" parameterType="map">
+        UPDATE promocion SET fotoPromocion = #{fotoPromocion}
+        WHERE idPromocion  = #{idPromocion}
+    </update>                                      
+
 </mapper>
