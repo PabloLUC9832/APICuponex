@@ -14,6 +14,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
+import mybatis.MyBatisUtil;
 import pojos.Promocion;
 import pojos.RespuestaUsuario;
 
@@ -212,4 +213,24 @@ public class UsuarioWS {
         return catalogos;
     }
     
+    @Path("obtenerFoto/{idPromocion}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Promocion obtenerFotoPromocion( @PathParam("idPromocion") Integer idPromocion  ){
+        Promocion promocion = new Promocion();
+        SqlSession conexionBD = MyBatisUtil.getSession();
+        
+        if(conexionBD != null){
+            try{
+                promocion = conexionBD.selectOne("usuario.obtenerFoto",idPromocion);
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conexionBD.close();
+            }
+        }
+                
+        return promocion;
+    }
+
 }

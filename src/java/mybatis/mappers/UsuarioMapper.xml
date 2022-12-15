@@ -38,6 +38,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                tipoPromocion,porcentaje,costoPromocion,idEstatus,idSucursal
         from promocion
         WHERE categoriaPromocion = #{categoriaPromocion}
-    </select>    
+    </select>
+
+    <select id="obtenerFoto" resultType="pojos.Promocion" parameterType="map">
+        SELECT idPromocion,nombre, descripcion,fechaInicio,fechaTermino,restricciones,porcentaje,costoPromocion, TO_BASE64(fotoPromocion) as 'fotoPromocion'
+        FROM promocion
+        WHERE idPromocion = #{idPromocion}
+    </select>
 
 </mapper>
