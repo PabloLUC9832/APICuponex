@@ -41,8 +41,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <select id="obtenerFoto" resultType="pojos.Promocion" parameterType="map">
-        SELECT idPromocion,nombre, descripcion,fechaInicio,fechaTermino,restricciones,porcentaje,costoPromocion, TO_BASE64(fotoPromocion) as 'fotoPromocion'
+        <!--
+        SELECT idPromocion,nombre, descripcion,fechaInicio,fechaTermino,
+               restricciones,tipoPromocion,porcentaje,costoPromocion,categoriaPromocion,
+               idEstatus,idSucursal,TO_BASE64(fotoPromocion) as 'fotoPromocion'
+               
         FROM promocion
+        WHERE idPromocion = #{idPromocion}
+        -->
+        SELECT idPromocion,promocion.nombre, descripcion,fechaInicio,fechaTermino,
+               restricciones,promocion.tipoPromocion , catalogo.nombre as 'nombreTipoPromocion',porcentaje,costoPromocion,categoriaPromocion,
+               idEstatus,idSucursal,TO_BASE64(fotoPromocion) as 'fotoPromocion'
+               
+        FROM promocion
+        INNER JOIN catalogo
+        ON promocion.tipoPromocion = catalogo.idCatalogo
         WHERE idPromocion = #{idPromocion}
     </select>
 
