@@ -49,6 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM promocion
         WHERE idPromocion = #{idPromocion}
         -->
+        <!--
         SELECT idPromocion,promocion.nombre, descripcion,fechaInicio,fechaTermino,
                restricciones,promocion.tipoPromocion , catalogo.nombre as 'nombreTipoPromocion',porcentaje,costoPromocion,categoriaPromocion,
                idEstatus,idSucursal,TO_BASE64(fotoPromocion) as 'fotoPromocion'
@@ -56,6 +57,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM promocion
         INNER JOIN catalogo
         ON promocion.tipoPromocion = catalogo.idCatalogo
+        WHERE idPromocion = #{idPromocion}
+        -->
+        SELECT promocion.idPromocion,promocion.nombre, descripcion,fechaInicio,fechaTermino,
+               restricciones,promocion.tipoPromocion , catalogo.nombre as 'nombreTipoPromocion',porcentaje,costoPromocion,categoriaPromocion,
+               promocion.idSucursal,TO_BASE64(fotoPromocion) as 'fotoPromocion',
+                   sucursal.idSucursal ,sucursal.idEmpresa ,
+               empresa.idEmpresa,empresa.nombreComercial as 'nombreEmpresa'
+
+        FROM promocion
+        INNER JOIN catalogo
+        ON promocion.tipoPromocion = catalogo.idCatalogo
+        INNER JOIN sucursal ON promocion.idSucursal = sucursal.idSucursal
+        INNER JOIN empresa ON sucursal.idEmpresa = empresa.idEmpresa        
         WHERE idPromocion = #{idPromocion}
     </select>
 
