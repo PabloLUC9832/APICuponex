@@ -46,6 +46,25 @@ public class PromocionWS {
         return empresas;
     }      
     
+    @Path("allIds")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Promocion> buscarPromocionesId(){
+        
+        List<Promocion> empresas = null;
+        SqlSession conn = mybatis.MyBatisUtil.getSession();
+        if (conn != null) {
+            try{
+                empresas = conn.selectList("promocion.getAllPromocionesid");
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conn.close();
+            }
+        }
+        return empresas;
+    }  
+    
     @Path("registrar")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,7 +76,7 @@ public class PromocionWS {
                             @FormParam("tipoPromocion") Integer tipoPromocion,
                             @FormParam("porcentaje") String porcentaje,
                             @FormParam("costoPromocion") float costoPromocion,
-                            @FormParam("categoriaPromocion") String categoriaPromocion,
+                            @FormParam("categoriaPromocion") Integer categoriaPromocion,
                             @FormParam("idEstatus") Integer idEstatus,
                             @FormParam("idSucursal") Integer idSucursal
                             ){
@@ -71,7 +90,7 @@ public class PromocionWS {
         promocionRegistro.setTipoPromocion(tipoPromocion);
         promocionRegistro.setPorcentaje(porcentaje);
         promocionRegistro.setCostoPromocion(costoPromocion);
-        promocionRegistro.setCategoriaPromocion(tipoPromocion);
+        promocionRegistro.setCategoriaPromocion(categoriaPromocion);
         promocionRegistro.setIdEstatus(idEstatus);
         promocionRegistro.setIdSucursal(idSucursal);
                                 
@@ -226,6 +245,8 @@ public class PromocionWS {
                 HashMap<String,Object> parametros = new HashMap<>();
                 parametros.put("idPromocion", idPromocion);
                 parametros.put("fotoPromocion", fotoPromocion);
+                System.out.println(idPromocion);
+                System.out.println(fotoPromocion);
                 int filasAfectadas = conexionBD.update("promocion.subirfoto", parametros);
                 
                 if (filasAfectadas > 0) {

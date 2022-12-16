@@ -32,6 +32,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                            telefono = #{telefono}, direccion = #{direccion},fechaNacimiento = #{fechaNacimiento}, password = #{password}
         WHERE idUsuario = #{idUsuario}
     </update>    
+    
+    <select id="byCategoria" resultType="pojos.Promocion" parameterType="int">
+        SELECT idPromocion,nombre,descripcion,fechaInicio,fechaTermino,restricciones,
+               tipoPromocion,porcentaje,costoPromocion,idEstatus,idSucursal
+        from promocion
+        WHERE categoriaPromocion = #{categoriaPromocion}
+    </select>
 
+    <select id="obtenerFoto" resultType="pojos.Promocion" parameterType="map">
+        SELECT promocion.idPromocion,promocion.nombre, descripcion,fechaInicio,fechaTermino,
+               restricciones,promocion.tipoPromocion , catalogo.nombre as 'nombreTipoPromocion',porcentaje,costoPromocion,categoriaPromocion,
+               promocion.idSucursal,TO_BASE64(fotoPromocion) as 'fotoPromocion',
+                   sucursal.idSucursal ,sucursal.idEmpresa ,
+               empresa.idEmpresa,empresa.nombreComercial as 'nombreEmpresa'
+
+        FROM promocion
+        INNER JOIN catalogo
+        ON promocion.tipoPromocion = catalogo.idCatalogo
+        INNER JOIN sucursal ON promocion.idSucursal = sucursal.idSucursal
+        INNER JOIN empresa ON sucursal.idEmpresa = empresa.idEmpresa        
+        WHERE idPromocion = #{idPromocion}
+    </select>
 
 </mapper>

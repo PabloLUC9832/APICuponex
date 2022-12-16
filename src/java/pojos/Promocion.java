@@ -18,6 +18,9 @@ public class Promocion{
     private Integer idEstatus;
     
     private String fotoPromocion;
+    
+    private String nombreTipoPromocion;
+    private String nombreEmpresa;
 
     public Promocion(){
         
@@ -143,6 +146,22 @@ public class Promocion{
         this.fotoPromocion = fotoPromocion;
     }
 
+    public String getNombreTipoPromocion() {
+        return nombreTipoPromocion;
+    }
 
+    public void setNombreTipoPromocion(String nombreTipoPromocion) {
+        this.nombreTipoPromocion = nombreTipoPromocion;
+    }
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+    
+    
             
 }

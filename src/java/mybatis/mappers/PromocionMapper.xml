@@ -7,7 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="getAllPromociones" resultType="pojos.Promocion">
         SELECT * FROM promocion WHERE idEstatus = 301
-    </select>       
+    </select>
+    
+    <select id="getAllPromocionesid" resultType="pojos.Promocion">
+        SELECT idPromocion FROM promocion WHERE idEstatus = 301
+    </select>              
 
     <insert id="registrar" parameterType="pojos.Promocion">
         INSERT INTO promocion (nombre,descripcion,fechaInicio,fechaTermino,
@@ -46,6 +50,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="subirfoto" parameterType="map">
         UPDATE promocion SET fotoPromocion = #{fotoPromocion}
         WHERE idPromocion  = #{idPromocion}
-    </update>                                      
+    </update>   
+    
+<select id="obtenerFoto" resultType="pojos.Promocion" parameterType="int">
+        SELECT TO_BASE64(fotoPromocion) AS 'fotoPromocion'
+        FROM promocion
+        WHERE idPromocion = #{idPromocion}
+    </select>                                   
 
 </mapper>
