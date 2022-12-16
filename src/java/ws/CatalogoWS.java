@@ -39,6 +39,6 @@ public class CatalogoWS {
         }
         
         return catalogos;
-    }   
+    }
     
 }

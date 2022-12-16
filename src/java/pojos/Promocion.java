@@ -162,6 +162,6 @@ public class Promocion{
         this.nombreEmpresa = nombreEmpresa;
     }
     
-    
+
             
 }

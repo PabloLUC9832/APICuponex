@@ -115,6 +115,7 @@ public class UsuarioWS {
 
                     resp.setError(false);
                     resp.setMensaje("Bienvenido ");
+                    resp.setIdUsuario(usuarioResultado.getIdUsuario());
                     resp.setNombre(usuarioResultado.getNombre());
                     resp.setApellidoPaterno(usuarioResultado.getApellidoPaterno());
                     resp.setApellidoMaterno(usuarioResultado.getApellidoMaterno());
@@ -191,7 +192,7 @@ public class UsuarioWS {
         return respuestaWS;
     }
     
-        @Path("bycategoria/{categoriaPromocion}")
+    @Path("bycategoria/{categoriaPromocion}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Promocion> getCatalogoiD( @PathParam("categoriaPromocion") Integer categoriaPromocion ){
@@ -232,5 +233,5 @@ public class UsuarioWS {
         return promocion;
     }
 
-    
+
 }
