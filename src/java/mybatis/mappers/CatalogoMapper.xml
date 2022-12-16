@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="catalogo">
 
     <select id="byCatalogo" resultType="pojos.Catalogo" parameterType="int">
-       <!--SELECT idCatalogo, nombre-->
-        SELECT idCatalogo
+       SELECT idCatalogo, nombre
+        <!--SELECT idCatalogo-->
         FROM catalogo
         WHERE idCategoria = #{idCategoria}
     </select>
